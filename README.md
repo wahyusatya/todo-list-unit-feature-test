@@ -22,12 +22,6 @@ php artisan key:generate
 ```bash
 php artisan migrate
 ```
-If you see the warn:
-```
- WARN  The SQLite database configured for this application does not exist: C:\path_to_app\todo-list\database\database.sqlite.
-```
-Type `yes` in command line.
-<br>
 6. Start development server:
 ```bash
 php artisan serve
