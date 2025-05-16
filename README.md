@@ -1,7 +1,7 @@
 # todo-list
 `todo-list` is a free, self-hosted, open source app, written using laravel 11.x, that may help You organise your tasks.
 
-# Installation using sqlite
+# Installation using MySQL
 1. Clone the git repository
 ```git
 git clone https://github.com/Fafikk/todo-list.git
