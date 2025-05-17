@@ -13,7 +13,7 @@ class FeatureTodoTest extends TestCase
      */
     public function testLoadHomePage(): void
     {
-        $response = $this->get('/dashboard');
+        $response = $this->get(route('dashboard'));
 
         $response->assertStatus(200);
     }
@@ -21,16 +21,16 @@ class FeatureTodoTest extends TestCase
 
     public function testCreateActivity(): void
     {
-        $response = $this->get('/dashboard');
+        $response = $this->get(route('dashboard'));
 
         $data = [
             'item' => 'Belajar Testing',
         ];
 
-        $response = $this->post('/item', $data);
+        $response = $this->post(route('item.store'), $data);
 
         $response->assertStatus(302);
-        $response->assertRedirect('/dashboard');
+        $response->assertRedirect(route('dashboard'));
 
         $this->assertDatabaseHas('tasks', [
             'name' => 'Belajar Testing',
