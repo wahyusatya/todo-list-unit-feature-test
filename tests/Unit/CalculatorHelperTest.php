@@ -8,6 +8,25 @@ use PHPUnit\Framework\TestCase;
 
 class CalculatorHelperTest extends TestCase
 {
+    public function testPerkalian(){
+        $this->assertEquals(4, CalculatorHelper::perkalian(a: 2, b: 2));
+    }
+
+
+    public function testMultiplePerkalian()
+    {
+        $cases = [
+            [2, 2, 4],
+            [3, 2, 6],
+            [5, 2, 10]
+        ];
+
+        foreach ($cases as [$a, $b, $expected]) {
+            $this->assertEquals($expected, CalculatorHelper::perkalian($a, $b));
+        }
+    }
+
+
     public function testAddition()
     {
         $this->assertEquals(5, CalculatorHelper::add(2, 3));
@@ -32,6 +51,8 @@ class CalculatorHelperTest extends TestCase
         }
     }
 
+
+    // Alternatif DRY (Dont Repeat Yourself)
     #[DataProvider('additionProvider')]
     public function testAdditionWithDataProvider($a, $b, $expected)
     {

@@ -27,7 +27,7 @@ class ItemController extends Controller
             if (!empty($tagName)) {
                 Tag::create([
                     'tag_name' => $tagName,
-                    'task_id' => $tasks->id,
+                    'task_id' => $task->id,
                 ]);
             }
         }

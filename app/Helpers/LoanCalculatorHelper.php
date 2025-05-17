@@ -6,9 +6,7 @@ use Exception;
 
 class LoanCalculatorHelper
 {
-    /**
-     * Hitung cicilan bulanan menggunakan metode anuitas.
-     */
+    // Perhitungan bulanan
     public static function calculateMonthlyInstallment(float $principal, float $annualInterestRate, int $years): float
     {
         $monthlyRate = $annualInterestRate / 12 / 100;
@@ -22,12 +20,14 @@ class LoanCalculatorHelper
         return round($installment, 2);
     }
 
+    // Perhitungan bunga
     public static function calculateTotalInterest(float $installment, int $years, float $principal): float
     {
         $totalPaid = $installment * $years * 12;
         return round($totalPaid - $principal, 2);
     }
 
+    // Total bayar
     public static function calculateTotalPayment(float $installment, int $years): float
     {
         return round($installment * $years * 12, 2);
