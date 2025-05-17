@@ -40,7 +40,7 @@
         <ul class="todo" id="todo">
             @foreach ($tasks as $task)
                 <li>
-                    {!! $task->name !!}
+                    {{ $task->name }}
                     <form action="{{ route('item.destroy', $task->id) }}" method="post">
                         @csrf
                         @method('DELETE')

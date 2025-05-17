@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreItemRequest;
 use App\Models\Tag;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function insert(Request $request)
+    public function insert(StoreItemRequest $request)
     {
         $raw = $request->input('item');
 
