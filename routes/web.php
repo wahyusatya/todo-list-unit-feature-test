@@ -22,4 +22,4 @@ Route::post('/calculator', [CalculatorController::class, 'calculate']);
 
 // Loan
 Route::get('/loan', [LoanCalculatorController::class, 'index']);
-Route::post('/loan', [LoanCalculatorController::class, 'calculate']);
+Route::post('/calculate', [LoanCalculatorController::class, 'calculate']);

@@ -3,69 +3,38 @@
 namespace Tests\Unit;
 
 use App\Helpers\CalculatorHelper;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorHelperTest extends TestCase
 {
-    public function testPerkalian(){
-        $this->assertEquals(4, CalculatorHelper::perkalian(a: 2, b: 2));
+    public function test_perkalian_with_zero()
+    {
+        $this->assertEquals(0, CalculatorHelper::perkalian(0, 100));
+        $this->assertEquals(0, CalculatorHelper::perkalian(100, 0));
     }
 
-
-    public function testMultiplePerkalian()
+    public function test_perkalian_with_negative_numbers()
     {
-        $cases = [
-            [2, 2, 4],
-            [3, 2, 6],
-            [5, 2, 10]
-        ];
-
-        foreach ($cases as [$a, $b, $expected]) {
-            $this->assertEquals($expected, CalculatorHelper::perkalian($a, $b));
-        }
+        $this->assertEquals(-6, CalculatorHelper::perkalian(-2, 3));
+        $this->assertEquals(6, CalculatorHelper::perkalian(-2, -3));
     }
 
-
-    public function testAddition()
+    public function test_addition_with_large_numbers()
     {
-        $this->assertEquals(5, CalculatorHelper::add(2, 3));
-    }
+        $a = 999999999;
+        $b = 111111111;
+        $expected = $a + $b;
 
-    public function testSubtraction()
-    {
-        $this->assertEquals(1, CalculatorHelper::subtract(4, 3));
-    }
-
-    public function testMultipleTestCase()
-    {
-        $cases = [
-            [2, 3, 5],
-            [0, 0, 0],
-            [-1, 1, 0],
-            [10, 5, 15],
-        ];
-
-        foreach ($cases as [$a, $b, $expected]) {
-            $this->assertEquals($expected, CalculatorHelper::add($a, $b), "Failed on: $a + $b");
-        }
-    }
-
-
-    // Alternatif DRY (Dont Repeat Yourself)
-    #[DataProvider('additionProvider')]
-    public function testAdditionWithDataProvider($a, $b, $expected)
-    {
         $this->assertEquals($expected, CalculatorHelper::add($a, $b));
     }
 
-    public static function additionProvider()
+    public function test_subtraction_resulting_negative()
     {
-        return [
-            [2, 3, 5],
-            [0, 0, 0],
-            [-1, 1, 0],
-            [10, 5, 15],
-        ];
+        $this->assertEquals(-5, CalculatorHelper::subtract(5, 10));
+    }
+
+    public function test_addition_with_floats()
+    {
+        $this->assertEquals(5.7, CalculatorHelper::add(2.5, 3.2), '', 0.01);
     }
 }
